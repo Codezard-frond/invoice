@@ -15,8 +15,8 @@ import { useAppStore } from "../lib/zustend";
 function Header() {
   const { setFilter } = useAppStore();
   const [items, setItems] = useState({
-    draft: true,
-    Paid: true,
+    draft: false,
+    Paid: false,
     Panding: false, 
   });
 

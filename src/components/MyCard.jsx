@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { StatustBadge } from "./ui/StatustBadge"; // ✅ IMPORT QO‘SHILDI
+import { StatustBadge } from "./ui/StatustBadge"; 
 import { useNavigate } from "react-router-dom";
 
 function MyCard({
