@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getInvoice } from '../request'
-import CardSkleton from '../components/CardSkleton';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getInvoice } from "../request";
+import CardSkleton from "../components/CardSkleton";
+import DetailsSkleton from "../components/ui/DetailsSketon";
+import { Button } from "../components/ui/button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function Details() {
-  const {id} = useParams()
+  const navigate = useNavigate()
+  const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [invoice, setInvoice] = useState([]);
-
+  console.log(invoice);
   useEffect(() => {
     setLoading(true);
-    getInvoice("/invoices",id)
+    getInvoice("/invoices", id)
       .then((res) => {
         setInvoice(res);
       })
@@ -30,11 +34,10 @@ export default function Details() {
     );
   }
   if (loading) {
-    return <CardSkleton />;
+    return <DetailsSkleton />;
   }
-  return (
-    <div>{id}</div>
-  )
-}
 
- 
+  return <div className="base_container">
+   <Button className={"mt-[64px]"} variant="ghost" onClick={() => navigate("/")}><ArrowLeft/> Go back</Button>
+  </div>;
+}

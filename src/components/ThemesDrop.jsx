@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 function ThemesDrop() {
   const [dark, setDark] = useState(() => {
-    const updTheme = localStorage.getItem("themes");
+    const updTheme = localStorage.getItem("theme");
     if (updTheme) {
       document.documentElement.dataset.theme = updTheme;
       return updTheme.startsWith("dark-");
@@ -26,26 +26,27 @@ function ThemesDrop() {
   }, [dark]);
 
   if (dark) {
-   
-   return <Button
-      onClick={themeMode}
-      className="rounded-2xl"
-      variant="ghost"
-      aria-label="Toggle"
-    >
-      
-      <img src="./image/DarkMode.svg" alt="dark" width={20} height={20} />
-    </Button>;
+    return (
+      <Button
+        onClick={themeMode}
+        className="rounded-2xl"
+        variant="ghost"
+        aria-label="Toggle"
+      >
+        <img src="./image/DarkMode.svg" alt="dark" width={20} height={20} />
+      </Button>
+    );
   } else {
-   return <Button
-      onClick={themeMode}
-      className="rounded-2xl"
-      variant="ghost"
-      aria-label="Toggle"
-    >
-      
-      <img src="./image/LinghtMode.svg" alt="light" width={20} height={20} />
-    </Button>;
+    return (
+      <Button
+        onClick={themeMode}
+        className="rounded-2xl"
+        variant="ghost"
+        aria-label="Toggle"
+      >
+        <img src="./image/LinghtMode.svg" alt="light" width={20} height={20} />
+      </Button>
+    );
   }
 }
 

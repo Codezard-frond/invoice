@@ -103,12 +103,39 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-  .base_container {
-    @apply container mx-auto;
-  }
+   
 }
 
 
 .sidebar__content{
   border-radius: 0 20px 20px 0;
+}
+
+
+
+.base_container{
+  max-width: 720px ;
+  margin: 0 auto;
+}
+
+
+/* @media (max-width:768px) {
+  .main_layout{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+  }
+  .Sidebar_content{
+    display: flex;
+    justify-content: space-between;
+  }
+  .Sidebar_Right{
+    display: flex;
+    align-items: center;
+  }
+} */
+#sideBar_right{
+  display: flex;
+  align-items: center !important;
 }

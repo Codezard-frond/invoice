@@ -4,7 +4,7 @@ import Sidebar from "../components/ui/Sidebar";
 
 function MainLayout() {
   return (
-    <div className="grid grid-cols-[104px_1fr] h-screen">
+    <div className="flex flex-col md:grid md:grid-cols-[104px_1fr] h-screen">
       <Sidebar />
       <main className="overflow-auto">
         <Outlet />
@@ -13,4 +13,4 @@ function MainLayout() {
   );
 }
 
-export default MainLayout
+export default MainLayout;
