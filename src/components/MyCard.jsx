@@ -1,11 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { StatustBadge } from "./ui/StatustBadge"; 
+import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { StatustBadge } from "./ui/StatustBadge";
 import { useNavigate } from "react-router-dom";
 
 function MyCard({
@@ -14,10 +9,16 @@ function MyCard({
   clientName = "John Morrison",
   total = "14,002.33",
   status = "draft",
+  id="1"
 }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <Card onClick={() => navigate("/details")} className={"border-2 border-transparent transition-colors hover:border-amber-300"}>
+    <Card
+      onClick={() => navigate(`${id}`)}
+      className={
+        "border-2 border-transparent transition-colors hover:border-amber-300 max-w-[730px] w-full mx-auto rounded"
+      }
+    >
       <CardHeader>
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <CardTitle>#{postCode}</CardTitle>

@@ -13,11 +13,12 @@ import { ArrowBigDown, PlusCircle } from "lucide-react";
 import { useAppStore } from "../lib/zustend";
 
 function Header() {
+  const { filteredInvoices } = useAppStore();
   const { setFilter } = useAppStore();
   const [items, setItems] = useState({
     draft: false,
     Paid: false,
-    Panding: false, 
+    Pending: false,
   });
 
   function handleChange(key) {
@@ -29,15 +30,15 @@ function Header() {
 
   useEffect(() => {
     const query = queryGenerator(items);
-    setFilter(query); 
-  }, [items.draft, items.Paid, items.Panding]);
+    setFilter(query);
+  }, [JSON.stringify(items)]);
 
   return (
     <header>
-      <div className="base_container flex items-center justify-between py-[75px]">
+      <div className="max-w-[730px] w-full mx-auto flex items-center justify-between py-[75px]">
         <div>
-          <h1>Invoices</h1>
-          <p>There are 7 total invoices</p>
+          <h1 className="font-bold text-[32px]">Invoices</h1>
+          <p className="text-[#888EB0] text-[12px] mt-[8px]">There are {filteredInvoices?.length} total invoices</p>
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

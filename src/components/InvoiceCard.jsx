@@ -3,6 +3,7 @@ import { getInvoices } from "../request";
 import CardSkleton from "./CardSkleton";
 import Mycard from "../components/MyCard";
 import { useAppStore } from "../lib/zustend";
+import NotFound from "./NotFound";
 function InvoiceCard() {
   const { fillter } = useAppStore();
   const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ function InvoiceCard() {
 
   useEffect(() => {
     setLoading(true);
-    getInvoices("/invoices", fillter)
+    getInvoices("/invoices", fillter.trim().replaceAll(" ", ""))
       .then((res) => {
         setInvoices(res);
       })
@@ -21,8 +22,13 @@ function InvoiceCard() {
       .finally(() => {
         setLoading(false);
       });
-      console.log(fillter);
   }, [fillter]);
+  if (loading) {
+    return <CardSkleton />;
+  }
+  if (invoices.length === 0) {
+    return <NotFound />;
+  }
   if (error) {
     return (
       <h1 className="text-3xl text-center text-red-500">
@@ -30,9 +36,7 @@ function InvoiceCard() {
       </h1>
     );
   }
-  if (loading) {
-    return <CardSkleton />;
-  }
+
   return (
     <div className="base_container flex flex-col gap-[16px]">
       {invoices.map((el, index) => {
@@ -45,6 +49,7 @@ function InvoiceCard() {
             total={total}
             status={status}
             key={el.id}
+            id={id}
           />
         );
       })}

@@ -1,7 +1,7 @@
 const baseURL = import.meta.env.VITE_BASE_URL;
 // hammasini olsh
 export async function getInvoices(route = "/invoices", query = "") {
-  const req = await fetch(baseURL + route + (query?  `?status=${query}`:""));
+  const req = await fetch(baseURL + route + (query ? `?status=${query}` : ""));
   if (req.status === 200) {
     const result = await req.json();
     return result.data;
@@ -10,8 +10,8 @@ export async function getInvoices(route = "/invoices", query = "") {
   }
 }
 // ID orqali olish
-export async function getInvoice({ id }) {
-  const req = await fetch(baseURL + `/${id}`);
+export async function getInvoice(route = "/invoices", id) {
+  const req = await fetch(baseURL + route + `/${id}`);
   if (req.status === 200) {
     const result = await req.json();
     return result;
